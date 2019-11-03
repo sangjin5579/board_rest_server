@@ -1,0 +1,46 @@
+  <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Scroll</title>
+ 	<link rel="stylesheet" href="css/reset.css">
+ 	<style>
+ 		.btn {
+ 			font-size: 2rem;
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	<button class="btn_0">타임아웃취소</button>
+ 	<button class="btn_1">인터벌취소</button>
+ 	<script>
+ 		(function() {
+ 			let timeId;
+ 			const btn_0 = document.querySelector('.btn_0');
+ 			const btn_1 = document.querySelector('.btn_1');
+
+ 			function sample1() {
+ 				console.log('setTimeout!');
+ 			}
+ 			function sample2() {
+ 				console.log('setInterval!');
+ 			}
+ 			//setTimeout 함수실행을 지연시키며 1을 반환한다.
+ 			timeId = setTimeout(sample1, 3000);
+
+ 			btn_0.addEventListener('click', function() {
+ 				//clearTimeout 지연중인 setTimeout을 중단한다.
+ 				clearTimeout(timeId);
+ 			})
+
+ 			//setInterval 함수실행을 지연시키며 1을 반환한다.
+ 			intervalId = setInterval(sample2, 100);
+
+ 			btn_1.addEventListener('click', function() {
+ 				//clearTimeout 지연중인 setTimeout을 중단한다.
+ 				clearInterval(intervalId);
+ 			})
+ 		})();
+	</script>
+ </body>
+ </html>

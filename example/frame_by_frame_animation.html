@@ -1,0 +1,34 @@
+  <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content='width=divice-width, initial-scale=1.0'>
+ 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 	<title>Interactive Web</title>
+ 	<style>
+ 		/* frame by frame animation 구현 */
+ 		/* 이미지 스트라이트를 사용하여 일정간격 바꾸도록 하는 방식 */
+ 		/* px이기 때문에 고해상도 지원을 위해 두배의 이미지를 준비한다.*/
+ 		/* gif는 투명도 적용이 안된다는 단점이 있다!*/
+ 		/* apng는 지원하지 않는 브라우저가 많다. */
+ 		@keyframes spaceship_ani {
+ 			100% {
+ 				background-position: -2550px 0; 
+ 			}
+ 		}
+ 		body {
+ 			background-color: black;
+ 		}
+ 		.spaceship {
+ 			width: 150px;
+ 			height: 150px;
+ 			background: url('../img/sprite_contact.png') no-repeat 0 0 / auto 150px;
+ 			animation: spaceship_ani 1s infinite steps(17);
+ 		}
+ 	</style>
+ </head>
+
+ <body>
+ 	<div class="spaceship"></div>
+ </body>
+ </html>

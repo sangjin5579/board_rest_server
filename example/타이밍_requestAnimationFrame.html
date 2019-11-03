@@ -1,0 +1,47 @@
+  <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Scroll</title>
+ 	<link rel="stylesheet" href="css/reset.css">
+ 	<style>
+ 		.btn {
+ 			font-size: 2rem;
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	<button class="btn">취소</button>
+ 	<script>
+ 		(function() {
+ 			//IE10부터 지원
+ 			//setInterval은 처리능력이 안되어 프레임로스 모바일 베터리 문제로 인하여 이러한 단점을 개선.
+ 			//초당 60회를 '목표'로 한다.
+ 			//함수에 취소할 수 있는 메소드를 지원하는 개념.
+
+ 			let n = 0;
+ 			let timeId;
+ 			const btn = document.querySelector('.btn');
+
+ 			function sample() {
+ 				n++;
+ 				console.log(n);
+ 				if(n > 200){
+ 					return;
+ 				}
+ 				//함수 자
+ 				timeId = requestAnimationFrame(sample);
+ 			}
+ 			//setTimeout효과
+ 			//timeId = requestAnimationFrame(sample);
+
+ 			sample();
+
+ 			btn.addEventListener('click', function() {
+ 				//clearTimeout 지연중인 setTimeout을 중단한다.
+ 				cancelAnimationFrame(timeId);
+ 			})
+ 		})();
+	</script>
+ </body>
+ </html>

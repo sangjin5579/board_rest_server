@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Scroll</title>
+ 	<link rel="stylesheet" href="css/reset.css">
+ 	<style>
+ 		@keyframes ball-ani {
+ 			from {
+ 				transform: translate(0,0);
+ 			} to {
+ 				transform: translate(200px, 200px);
+ 			}
+ 		}
+ 		.ball {
+ 			position: absolute;
+ 			left:0;
+ 			top:0;
+ 			width: 30px;
+ 			height: 30px;
+ 			border-radius: 50%;
+ 			background: red;
+ 			animation: ball-ani 1s 3 alternate forwards;
+ 		}
+ 		/*.ball.end {
+ 			background: dodgerblue;
+ 		}*/
+ 		.ball.end {
+ 			border: 5px solid dodgerblue: ;
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	<div class="ball">
+ 		
+ 	</div>
+ 	<script>
+ 		(function() {
+ 			const ballElem = document.querySelector('.ball');
+
+ 			//요소의 위치는 click의 경우 e.clientX/Y 사용
+ 			window.addEventListener('click', function(e){
+ 				ballElem.style.transform = 'translate('+ (e.clientX - 15) + 'px, ' + (e.clientY - 15) + 'px)';
+ 			});
+
+ 			// transitionend/transitionstart 이벤트
+ 			// e.elapsedTime 진행된 transition시간을 나타낸다
+ 			// e.propertyName 진행된 css property의 이름을 나타낸다.
+ 			// ballElem.addEventListener('transitionend', function(e) {
+ 			// 	ballElem.classList.add('end');
+ 			// 	console.log(e.elapsedTime);
+ 			// 	console.log(e.propertyName);
+ 			// });
+
+ 			ballElem.addEventListener('animationend', function(e){
+ 				ballElem.classList.add('end');
+ 			})
+
+ 			//animationIteration 애니메이션 순회가 재시작한 총횟수(진행회수-1)만큼 실행한다.
+ 			ballElem.addEventListener('animationIteration', function(e){
+ 				console.log("반복!");
+ 			})
+ 		})();
+	</script>
+ </body>
+ </html>

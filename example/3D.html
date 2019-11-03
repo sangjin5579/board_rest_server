@@ -1,0 +1,85 @@
+  <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content='width=divice-width, initial-scale=1.0'>
+ 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 	<title>Interactive Web</title>
+ 	<style>
+ 		/* 3D 핵심 
+			1.전체 영역에 대하여 perspective 설정으로 입체와 한다.
+			2.perspective의 영향을 자손에 미치도록 하기위해 transform-style: preserve-3d를 적용한다.
+				-> IE는 preserve-3d 속성을 지원을 하지 않으므로 다르방안 모색해야한다.
+ 			3.축의 전환도 transform의 부모에 transform-origin을 부여한다.
+ 			4.vendor prefix : 크로스 브라우징을 위해 일부 속성에 대하여 접두어 필요하다.
+ 				->브라우저에 붙는 접두어를 정하여 표준이 되기 전 상태를 표현한다.
+ 				->마지막에는 표준 표현을 써주도록 한다.
+ 		*/
+ 		.world {
+ 			display: flex;
+ 			align-items: center;
+ 			justify-content: center;
+
+ 			/*viewport : 현재 창크기 기준 퍼센티지*/
+ 			width: 80vw;
+ 			height: 80vh;
+ 			background: #fff000;
+ 			/*내 시점에서 떨어진 거리*/
+ 			perspective: 300px;
+ 		}
+ 		/*.card {
+ 			position: relative;
+ 			width: 100px;
+ 			height: 150px;
+ 			margin: 1em;*/
+ 			/*준비를 위해 설정해두는 것이 좋다.*/
+ 			/*transform: rotateY(0deg);
+ 			transition: 1s;
+ 			transform-style: preserve-3d;
+ 			transform-origin: 0%;
+ 		}*/
+ 		.card-side {
+ 			display: flex;
+ 			align-items: center;
+ 			justify-content: center;
+ 			position: absolute;
+ 			left: 50%;
+ 			top: 50%;
+ 			width:100px;
+ 			height:150px;
+ 			margin: -75px 0 0 -50px;
+ 			border-radius: 0.5em;
+ 			font-size: 1.5rem;
+ 			-webkit-backface-visibility:hidden ;
+ 			 -moz-backface-visibility:hidden ;
+ 			 -ms-backface-visibility:hidden ;
+ 			 backface-visibility:hidden ;
+ 			 transition: 1s;
+ 			 transform-origin: 0%;
+ 		}
+ 		.card-side-front {
+ 			z-index: 1;
+ 			background-color: white;
+ 		}
+ 		.card-side-back {
+ 			background-color: red;
+ 			transform: rotateY(180deg);
+ 		}
+ 		.world:hover .card-side-front {
+ 			transform: rotateY(180deg)
+ 		}
+ 		.world:hover .card-side-back {
+ 			transform: rotateY(360deg)
+ 		}
+ 	</style>
+ </head>
+
+ <body>
+ 	<div class="world">
+ 		<!-- <div class="card"> -->
+ 			<div class="card-side card-side-front">F</div>
+ 			<div class="card-side card-side-back">B</div>
+ 		<!-- </div> -->
+ 	</div>
+ </body>
+ </html>

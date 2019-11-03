@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Scroll</title>
+ 	<link rel="stylesheet" href="css/reset.css">
+ 	<style>
+ 		img {
+ 			max-width: 100%;
+ 		}
+ 		.content {
+ 			height: 1000vh;
+ 			padding: 20%;
+ 			background: yellowgreen;
+ 		}
+ 		.output {
+ 			position: fixed;
+ 			left: 0;
+ 			top: 0;
+ 			width: 100%;
+ 			font-size: 2rem;
+ 			font-weight: 200;
+ 			color: #fff;
+ 			background: rgba(0, 0, 0, 0.4);
+ 		}
+ 		.ilbuni {
+ 			width: 100px;
+ 			margin: 20px auto;
+ 			transition: 1s;
+ 		}
+ 		.ilbuni.zoom {
+ 			transform: scale(2);
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	<div class="output">output</div>
+ 	<div class="content">
+ 		<p>
+ 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eveniet, minima enim obcaecati deserunt eius amet tenetur vitae veniam quibusdam sit ratione distinctio! Id, labore, ab. Accusantium, sequi. Nostrum consectetur totam omnis labore ducimus, quos. Illo, reprehenderit dolore enim, hic dignissimos sunt maxime suscipit facilis odit, nobis doloremque consectetur accusantium accusamus nam, ipsum eos delectus atque necessitatibus error! Dolores ut, aperiam suscipit repellendus. Quas vero possimus tempore est ipsam ratione dolorem. Error nulla dolor quibusdam recusandae fuga quos obcaecati, cum facere quam optio nobis consequatur reprehenderit natus accusamus ut! Laboriosam eius natus facilis et minima quaerat pariatur beatae praesentium amet?
+ 		</p>
+ 		<figure class="ilbuni">
+ 			<img src="../img/ilbuni_0.png" alt="일분이">
+ 		</figure>
+ 	</div>
+ 	<script>
+ 		(function(){
+ 			const outputElem = document.querySelector(".output");
+ 			const ilbuniElem = document.querySelector(".ilbuni");
+
+ 			function showValue(){
+ 				
+ 				//pageYOffset 스크롤의 위치를 나타낸다.
+ 				// outputElem.innerHTML = window.pageYOffset;
+
+ 				//offsetTop 첫위치의 top을 가져온다.
+ 				//outputElem.innerHTML = window.offsetTop;
+ 				
+ 				//getBoundingClientRect object의 크기와 위치를 나타낸다.
+ 				let posY = ilbuniElem.getBoundingClientRect().top;
+ 				outputElem.innerHTML = posY;
+
+ 				if(posY < window.innerHeight * 0.2){
+ 					ilbuniElem.classList.add('zoom');
+ 				} else {
+ 					ilbuniElem.classList.remove('zoom');
+ 				}
+ 			};
+
+ 			window.addEventListener('scroll', function(){
+ 				showValue();
+ 			});
+
+ 			showValue();
+ 		})();
+	</script>
+ </body>
+ </html>
